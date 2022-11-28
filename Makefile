@@ -33,6 +33,7 @@ clean_drafts:
 
 realclean: clean clean_drafts
 	rm -f $(FILENAME).pdf ichep_2022_proceedings.pdf
+	rm -rf _minted-$(FILENAME)
 
 lint:
 	grep -E --color=always -r -i --include=\*.tex --include=\*.bib "(\b[a-zA-Z]+) \1\b" || true
@@ -58,6 +59,8 @@ arXiv: deep_clean text
 	cp *.bst submit_to_arXiv
 	cp pos.sty PoSlogo.pdf PoSlogo.ps submit_to_arXiv
 	cp -r src submit_to_arXiv
+	cp -r latex submit_to_arXiv
+	cp -r figures submit_to_arXiv
 	cp Makefile submit_to_arXiv
 	mv _minted-$(FILENAME) submit_to_arXiv/_minted-ms
 	mv submit_to_arXiv/$(FILENAME).tex submit_to_arXiv/ms.tex
@@ -77,6 +80,14 @@ arXiv: deep_clean text
 	if [ -f $(FILENAME).tex.bak ];then \
 		mv $(FILENAME).tex.bak $(FILENAME).tex; \
 	fi
+
+list_arXiv:
+	tar -tvf submit_to_arXiv.tar.gz
+
+test_arXiv:
+	tar -xzvf submit_to_arXiv.tar.gz
+	cd submit_to_arXiv
+	make
 
 clean_arXiv:
 	if [ -f submit_to_arXiv.tar.gz ];then \
