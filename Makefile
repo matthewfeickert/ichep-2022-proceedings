@@ -86,8 +86,7 @@ list_arXiv:
 
 test_arXiv:
 	tar -xzvf submit_to_arXiv.tar.gz
-	cd submit_to_arXiv
-	make
+	cd submit_to_arXiv && make
 
 clean_arXiv:
 	if [ -f submit_to_arXiv.tar.gz ];then \
