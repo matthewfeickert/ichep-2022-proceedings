@@ -48,7 +48,7 @@ final:
 
 arXiv: deep_clean text
 	# Get a minted cache
-	sed -i.bak 's/cache=false/cache=true/' $(FILENAME).tex
+	sed -i.bak 's/cache=false/cache=true/' latex/packages.tex
 	$(MAKE) text
 	# Copy files
 	mkdir submit_to_arXiv
@@ -56,10 +56,8 @@ arXiv: deep_clean text
 	cp *.bbl submit_to_arXiv/ms.bbl
 	# .bst files are not used, but copy over to inlcude all src files for posterity
 	cp *.bst submit_to_arXiv
-	cp orcidlink.sty submit_to_arXiv
-	cp SciPost.cls submit_to_arXiv
-	cp -r plots submit_to_arXiv
-	cp -r code submit_to_arXiv
+	cp pos.sty PoSlogo.pdf PoSlogo.ps submit_to_arXiv
+	cp -r src submit_to_arXiv
 	cp Makefile submit_to_arXiv
 	mv _minted-$(FILENAME) submit_to_arXiv/_minted-ms
 	mv submit_to_arXiv/$(FILENAME).tex submit_to_arXiv/ms.tex
