@@ -31,8 +31,8 @@ clean:
 clean_drafts:
 	rm -f draft_*.pdf
 
-realclean: clean
-	rm -f *.ps *.pdf
+realclean: clean clean_drafts
+	rm -f $(FILENAME).pdf ichep_2022_proceedings.pdf
 
 lint:
 	grep -E --color=always -r -i --include=\*.tex --include=\*.bib "(\b[a-zA-Z]+) \1\b" || true
