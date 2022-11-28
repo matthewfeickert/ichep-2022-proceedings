@@ -1,0 +1,64 @@
+% Please make sure you insert your
+% data according to the instructions in PoSauthmanual.pdf
+\documentclass[a4paper,11pt]{article}
+\usepackage{pos}
+
+\input{latex/packages.tex}
+\input{latex/commands.tex}
+
+\title{pyhf: pure-Python implementation of HistFactory with tensors and automatic differentiation}
+\ShortTitle{pyhf: pure-Python implementation of HistFactory}
+
+\author*[a]{Matthew Feickert}
+\author[b]{Lukas Heinrich}
+\author[c]{Giordon Stark}
+
+\affiliation[a]{University of Wisconsin-Madison,\\
+447 Lorch St., Madison, WI, USA}
+
+\affiliation[b]{Technical University Munich,\\
+Arcisstraße 21, 80333 München, Germany}
+
+\affiliation[c]{University of California Santa Cruz SCIPP,\\
+Santa Cruz, CA, USA}
+
+\emailAdd{matthew.feickert@cern.ch}
+\emailAdd{lukas.heinrich@cern.ch}
+\emailAdd{giordon.holtsberg.stark@cern.ch}
+
+\abstract{%
+ \input{src/abstract}
+}
+
+\FullConference{%
+  41st International Conference on High Energy physics - ICHEP2022\\
+  6-13 July, 2022\\
+  Bologna, Italy
+}
+
+%% \tableofcontents
+
+\begin{document}
+%
+\maketitle
+%
+\input{src/introduction.tex}
+\input{src/histfactory.tex}
+\input{src/pyhf.tex}
+\input{src/conclusions.tex}
+\input{src/acknowledgments.tex}
+
+% \section{...}
+
+% \begin{thebibliography}{99}
+% \bibitem{...}
+% ....
+
+% \end{thebibliography}
+
+%
+% \clearpage
+\bibliographystyle{JHEP}
+\bibliography{bib/ref,bib/ATLAS,bib/ConfNotes,bib/PubNotes,bib/reinterpretation}
+
+\end{document}
