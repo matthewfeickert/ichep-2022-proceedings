@@ -77,8 +77,8 @@ arXiv: deep_clean text
 	tar -zcvf submit_to_arXiv.tar.gz submit_to_arXiv/
 	rm -rf submit_to_arXiv
 	$(MAKE) realclean
-	if [ -f $(FILENAME).tex.bak ];then \
-		mv $(FILENAME).tex.bak $(FILENAME).tex; \
+	if [ -f latex/packages.tex.bak ];then \
+		mv latex/packages.tex.bak latex/packages.tex; \
 	fi
 
 list_arXiv:
