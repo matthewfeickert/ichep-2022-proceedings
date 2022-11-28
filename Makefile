@@ -3,9 +3,10 @@ FILENAME = main
 date = $(shell date +%Y-%m-%d)
 output_file = draft_$(date).pdf
 
-# LATEX = pdf #pdflatex
+# lualatex is having a problem with minted
+LATEX = pdf #pdflatex
 # LATEX = xelatex
-LATEX = lualatex
+# LATEX = lualatex
 
 # BIBTEX = bibtex
 BIBTEX = biber
