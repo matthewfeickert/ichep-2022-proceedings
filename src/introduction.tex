@@ -1,0 +1,8 @@
+\section{Introduction}\label{sec:introduction}
+Measurements in High Energy Physics (HEP) aim to determine the compatibility of observed events with theoretical predictions.
+The relationship between them is often formalised in a statistical \term{model} $f(\bm{x}|\fullset)$ describing the probability of data $\bm{x}$ given model parameters $\fullset$.
+Given observed data, the \term{likelihood} $\mathcal{L}(\fullset)$ then serves as the basis to test hypotheses on the parameters~$\fullset$.
+For measurements based on binned data (\term{histograms}), the \HiFa{}~\cite{Cranmer:1456844} family of statistical models has been widely used for likelihood construction in both Standard Model (SM) measurements (e.g. Refs.~\cite{HIGG-2013-02,Aaij:2015sqa}) as well as searches for new physics (e.g. Ref.~\cite{ATLAS-CONF-2018-041}) and reinterpretation studies (e.g. Ref.~\cite{Heinrich:2018nip}).
+\pyhf{}~\cite{pyhf,pyhf_joss} is presented as the first pure-Python implementation of the \HiFa{} specification.
+In addition to providing a Python and command line API for \HiFa{} model building and inspection, it leverages modern open source $n$-dimensional array libraries to take advantage of automatic differentiation and hardware acceleration to accelerate the statistical inference and reduce the time to analyst insight.
+

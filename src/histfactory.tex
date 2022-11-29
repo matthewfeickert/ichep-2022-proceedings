@@ -1,0 +1,30 @@
+\section{\HiFa{} Formalism}\label{sec:HistFactory}
+
+\HiFa{} statistical models --- described in depth in Ref.~\cite{ATL-PHYS-PUB-2019-029} and Ref.~\cite{CHEP_2019}  --- center around the simultaneous measurement of disjoint binned distributions (\term{channels}) observed as event counts $\channelcounts$.
+For each channel, the overall expected event rate is the sum over a number of physics processes (\term{samples}).
+The sample rates may be subject to parametrised variations, both to express the effect of \term{free parameters} $\freeset$ and to account for systematic uncertainties as a function of \term{constrained parameters} $\constrset$, whose impact on the expected event rates from the nominal rates is limited by \term{constraint terms}.
+In a frequentist framework these constraint terms can be viewed as \term{auxiliary measurements} with additional global observable data $\auxdata$, which paired with the channel data $\channelcounts$ completes the observation $\bm{x} = (\channelcounts,\auxdata)$.
+The full parameter set can be partitioned into free and constrained parameters $\fullset = (\freeset,\constrset)$, where a subset of the free parameters are declared \term{parameters of interest} (POI) $\poiset$ (e.g. the \term{signal strength}) and all remaining parameters as \term{nuisance parameters} $\nuisset$.
+
+\begin{equation}
+ \label{eqn:parameters_partitions}
+ f(\bm{x}|\fullset) = f(\bm{x}|\annoterel{free}{\freeset},\annotereldn{constrained\hspace{1cm}}{\constrset}) = f(\bm{x}|\annoterel{\hspace{2cm}parameters of interest}{\poiset},\annotereldn{\hspace{1cm}nuisance parameters}{\nuisset})
+\end{equation}
+
+The overall structure of a \HiFa{} probability model is then a product of the {\color{blue}analysis-specific model term} describing the measurements of the channels and the {\color{red}analysis-independent set of constraint terms}:
+\begin{equation}
+ \label{eqn:hifa_template}
+ f(\channelcounts, \auxdata \,|\,\freeset,\constrset) = \underbrace{\color{blue}{\prod_{c\in\mathrm{\,channels}} \prod_{b \in \mathrm{\,bins}_c}\textrm{Pois}\left(n_{cb} \,\middle|\, \nu_{cb}\left(\freeset,\constrset\right)\right)}}_{\substack{\text{Simultaneous measurement}\\%
+   \text{of multiple channels}}} \underbrace{\color{red}{\prod_{\singleconstr \in \constrset} c_{\singleconstr}(a_{\singleconstr} |\, \singleconstr)}}_{\substack{\text{constraint terms}\\%
+   \text{for ``auxiliary measurements''}}},
+\end{equation}
+where within a certain integrated luminosity one observes $n_{cb}$ events given the expected rate of events $\nu_{cb}(\freeset,\constrset)$ as a function of unconstrained parameters $\freeset$ and constrained parameters $\constrset$.
+The latter has corresponding one-dimensional constraint terms $c_\singleconstr(a_\singleconstr|\,\singleconstr)$ with auxiliary data $a_\singleconstr$ constraining the parameter $\singleconstr$.
+The expected event rates $\nu_{cb}$ are defined as
+
+\begin{equation}
+ \label{eqn:sample_rates}
+ \nu_{cb}\left(\fullset\right) = \sum_{s\in\mathrm{\,samples}} \nu_{scb}\left(\freeset,\constrset\right) = \sum_{s\in\mathrm{\,samples}}\underbrace{\left(\prod_{\kappa\in\,\bm{\kappa}} \kappa_{scb}\left(\freeset,\constrset\right)\right)}_{\text{multiplicative modifiers}}\, \Bigg(\nu_{scb}^0\left(\freeset, \constrset\right) + \underbrace{\sum_{\Delta\in\bm{\Delta}} \Delta_{scb}\left(\freeset,\constrset\right)}_{\text{additive modifiers}}\Bigg)
+\end{equation}
+
+\noindent from constant \term{nominal rate} $\nu_{scb}^0$ and a set of multiplicative and additive \term{rate modifiers} $\bm{\kappa}(\fullset)$ and $\bm{\Delta}(\fullset)$.
